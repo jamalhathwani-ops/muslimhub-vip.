@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuslimHub VIP</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00c853">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="vip-dark">
+
+    <div id="splash-screen">
+        <div class="gold-loader"></div>
+        <h1 class="logo-text">MuslimHub<span>VIP</span></h1>
+    </div>
+
+    <div id="salah-lock" class="lock-overlay" style="display:none;">
+        <div class="lock-inner">
+            <i class="fas fa-kaaba pulse"></i>
+            <h1>Prayer Time</h1>
+            <p id="salah-name">It is time for Salah</p>
+            <small>App will resume shortly after prayer.</small>
+        </div>
+    </div>
+
+    <header class="vip-header">
+        <div class="logo">MH</div>
+        <div class="search-pill">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search Quran, Ummah, or Ask Noor AI...">
+        </div>
+        <i class="fas fa-paper-plane dm-icon" onclick="restricted('Message')"></i>
+    </header>
+
+    <main id="main-scroller">
+        <section id="page-feed" class="app-page active">
+            <div class="story-row">
+                <div class="story-box add" onclick="restricted('Story')">+</div>
+                <div class="story-box">👤</div>
+                <div class="story-box">👤</div>
+                <div class="story-box">👤</div>
+            </div>
+            <div id="video-feed" class="v-container"></div>
+        </section>
+
+        <section id="page-quran" class="app-page" style="display:none;">
+            <div id="surah-list" class="surah-grid"></div>
+        </section>
+
+        <section id="page-ai" class="app-page" style="display:none;">
+            <div class="ai-container">
+                <div id="ai-chat" class="chat-box">
+                    <div class="bot-msg">Assalamu Alaikum. I am Noor. Ask me to translate, explain an Ayah, or tell a Prophet's story.</div>
+                </div>
+                <div class="ai-input-wrap">
+                    <input type="text" id="ai-input" placeholder="Ask Noor AI...">
+                    <button onclick="askAI()"><i class="fas fa-bolt"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav class="vip-nav">
+        <div class="nav-item active" onclick="switchTab('feed', this)"><i class="fas fa-home"></i></div>
+        <div class="nav-item" onclick="switchTab('quran', this)"><i class="fas fa-book-quran"></i></div>
+        <div class="nav-item post-btn" onclick="openStudio()"><i class="fas fa-plus"></i></div>
+        <div class="nav-item" onclick="switchTab('ai', this)"><i class="fas fa-wand-magic-sparkles"></i></div>
+        <div class="nav-item" onclick="switchTab('profile', this)"><i class="fas fa-user"></i></div>
+    </nav>
+
+    <div id="studio-modal" class="modal">
+        <div class="studio-card">
+            <h3>Content Studio</h3>
+            <div class="preview-window">Select Media to Edit</div>
+            <textarea id="cap" placeholder="Write a caption..."></textarea>
+            <div class="studio-footer">
+                <button onclick="closeStudio()">Cancel</button>
+                <button class="gold-btn" onclick="restricted('Post')">Post Globally</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
